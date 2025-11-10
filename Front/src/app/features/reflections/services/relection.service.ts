@@ -13,7 +13,8 @@ export class ReflectionService {
   private accessCount = 0;
 
   incrementAccessCount(): number {
-    return this.accessCount++;
+    console.log(this.accessCount);
+    return ++this.accessCount;
   }
 
   getAccessCount(): number {

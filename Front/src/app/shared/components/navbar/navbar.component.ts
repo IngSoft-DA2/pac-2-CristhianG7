@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { ReflectionService } from '../../../features/reflections/services/relection.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,5 +9,9 @@ import { RouterModule } from '@angular/router';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
+  private reflectionService = inject(ReflectionService)
 
+  incrementCount(): void{
+    this.reflectionService.incrementAccessCount();
+  }
 }
