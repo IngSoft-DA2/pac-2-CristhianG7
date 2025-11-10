@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>Reflection</h1>
+  <button (click)="loadImporters()">Fetch Importers</button>
+
+  <p *ngIf="loading()">Loading importers...</p>
+  <p *ngIf="error()">{{ error() }}</p>
+
+  <ul *ngIf="!loading() && !error() && importers().length > 0">
+    <li *ngFor="let importer of importers()">{{ importer }}</li>
+  </ul>
+  <div *ngIf="!loading() && !error() && importers().length === 0">No importers found.</div>
+</div>
