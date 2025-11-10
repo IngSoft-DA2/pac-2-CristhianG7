@@ -14,7 +14,7 @@ export class ReflectionComponent {
 
   private reflectionService = inject(ReflectionService);
 
-  importers = signal<Importers[]>([]);
+  importers = signal<string[]>([]);
   loading = signal<boolean>(false);
   error = signal<string | null>(null);
 
@@ -25,8 +25,7 @@ export class ReflectionComponent {
 
     this.reflectionService.getImporters().subscribe({
       next: (response) => {
-        const mapped = response.map((j) => this.reflectionService.mapPoster(j));
-        this.importers.set(mapped);
+        this.importers.set(response);
         this.loading.set(false);
       },
       error: (err) => {

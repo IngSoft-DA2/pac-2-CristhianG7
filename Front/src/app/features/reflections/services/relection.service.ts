@@ -21,15 +21,13 @@ export class ReflectionService {
     return this.accessCount;
   }
   
-  getImporters(): Observable<Importers[]> {
+  getImporters(): Observable<string[]> {
     const params = new HttpParams();
 
-    return this.httpClient.get<Importers[]>(`${this.apiUrl}/api/reflection/importers`, { params });
+    return this.httpClient.get<string[]>(`${this.apiUrl}/api/reflection/importers`, { params });
   }
 
   mapPoster(importer: Importers): Importers {
-    return {
-      ...importer
-    };
+      return { name: importer.name };
   }
 }
